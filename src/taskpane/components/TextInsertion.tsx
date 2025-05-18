@@ -5,34 +5,38 @@ import { Button, Field, Textarea, tokens, makeStyles } from "@fluentui/react-com
 /* global HTMLTextAreaElement */
 
 interface TextInsertionProps {
-  insertText: (text: string) => void;
+  textSetter: (text: string) => void;
+  textGetter: () => Promise<string>;
 }
 
 const useStyles = makeStyles({
   instructions: {
-    fontWeight: tokens.fontWeightSemibold,
-    marginTop: "20px",
-    marginBottom: "10px",
+    // fontWeight: tokens.fontWeightSemibold,
+    // marginTop: "20px",
+    // marginBottom: "10px",
   },
   textPromptAndInsertion: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    // display: "flex",
+    // flexDirection: "column",
+    // alignItems: "center",
   },
   textAreaField: {
-    marginLeft: "20px",
-    marginTop: "30px",
-    marginBottom: "20px",
-    marginRight: "20px",
-    maxWidth: "50%",
+    // marginLeft: "20px",
+    // marginTop: "30px",
+    // marginBottom: "20px",
+    // marginRight: "20px",
+    // maxWidth: "50%",
   },
 });
 
 const TextInsertion: React.FC<TextInsertionProps> = (props: TextInsertionProps) => {
   const [text, setText] = useState<string>("Some text.");
 
-  const handleTextInsertion = async () => {
-    await props.insertText(text);
+  const handleTextSet = async () => {
+    await props.textSetter(text);
+  };
+  const handleTextGet = async () => {
+    setText(await props.textGetter());
   };
 
   const handleTextChange = async (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -47,8 +51,11 @@ const TextInsertion: React.FC<TextInsertionProps> = (props: TextInsertionProps) 
         <Textarea size="large" value={text} onChange={handleTextChange} />
       </Field>
       <Field className={styles.instructions}>Click the button to insert text.</Field>
-      <Button appearance="primary" disabled={false} size="large" onClick={handleTextInsertion}>
-        Insert text
+      <Button appearance="primary" disabled={false} size="large" onClick={handleTextSet}>
+        Set text
+      </Button>
+      <Button appearance="primary" disabled={false} size="large" onClick={handleTextGet}>
+        Get text
       </Button>
     </div>
   );
