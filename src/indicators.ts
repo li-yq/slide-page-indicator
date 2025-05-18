@@ -58,6 +58,10 @@ function generatePartIndicators(page_configs: Array<PageConfig>): Array<PartPage
         const current_section_indicators = section_all_indicators[current_section_index]
         // then iter over slide page
         for (let page_idx_in_section = 0; page_idx_in_section < current_section_indicators.length; page_idx_in_section++) {
+            if(section[current_section_index][page_idx_in_section].hide){
+                indicators.push([])
+                continue
+            }
             let current_page_indicators: PartPageIndicators = []
             for (const idx in section) {
                 if (idx == current_section_index) {
