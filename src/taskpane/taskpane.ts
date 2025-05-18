@@ -1,9 +1,15 @@
 /* global PowerPoint console */
 
-interface PageConfig {
+export interface PageConfig {
   text: string;
   fontSize: number;
 }
+
+// default config
+export const defaultPageConfig: PageConfig = {
+  text: "NAN.",
+  fontSize: 12,
+};
 
 export async function setPageConfig(config: PageConfig) {
   try {
@@ -42,13 +48,4 @@ export async function getPageConfig(): Promise<PageConfig> {
     console.log("Error: " + error);
   }
   return config;
-}
-
-export async function setText(text: string) {
-  return setPageConfig({ text: text, fontSize: 12 });
-}
-
-export async function getText(): Promise<string> {
-  const config = await getPageConfig();
-  return config.text;
 }

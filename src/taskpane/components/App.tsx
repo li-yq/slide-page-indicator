@@ -1,7 +1,7 @@
 import * as React from "react";
-import TextInsertion from "./TextInsertion";
 import { makeStyles } from "@fluentui/react-components";
-import { getText, setText } from "../taskpane";
+import { getPageConfig, setPageConfig } from "../taskpane";
+import PageSettings from "./PageSettings";
 
 const useStyles = makeStyles({
   root: {
@@ -14,7 +14,7 @@ const App: React.FC = () => {
 
   return (
     <div className={styles.root}>
-      <TextInsertion textGetter={getText} textSetter={setText} />
+      <PageSettings configGetter={getPageConfig} configSetter={setPageConfig} />
     </div>
   );
 };

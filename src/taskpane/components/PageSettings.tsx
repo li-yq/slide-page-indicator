@@ -1,12 +1,13 @@
 import * as React from "react";
 import { useState } from "react";
 import { Button, Field, Textarea, tokens, makeStyles } from "@fluentui/react-components";
+import { defaultPageConfig, PageConfig } from "../taskpane";
 
 /* global HTMLTextAreaElement */
 
-interface TextInsertionProps {
-  textSetter: (text: string) => void;
-  textGetter: () => Promise<string>;
+interface PageSettingsProps {
+  configSetter: (config: PageConfig) => void;
+  configGetter: () => Promise<PageConfig>;
 }
 
 const useStyles = makeStyles({
@@ -29,18 +30,18 @@ const useStyles = makeStyles({
   },
 });
 
-const TextInsertion: React.FC<TextInsertionProps> = (props: TextInsertionProps) => {
-  const [text, setText] = useState<string>("Some text.");
+const PageSettings: React.FC<PageSettingsProps> = (props: PageSettingsProps) => {
+  const [config, setConfig] = useState<PageConfig>(defaultPageConfig);
 
   const handleTextSet = async () => {
-    await props.textSetter(text);
+    await props.configSetter(config);
   };
   const handleTextGet = async () => {
-    setText(await props.textGetter());
+    setConfig(await props.configGetter());
   };
 
   const handleTextChange = async (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(event.target.value);
+    setConfig(JSON.parse(event.target.value));
   };
 
   const styles = useStyles();
@@ -48,7 +49,7 @@ const TextInsertion: React.FC<TextInsertionProps> = (props: TextInsertionProps) 
   return (
     <div className={styles.textPromptAndInsertion}>
       <Field className={styles.textAreaField} size="large" label="Enter text to be inserted into the document.">
-        <Textarea size="large" value={text} onChange={handleTextChange} />
+        <Textarea size="large" value={JSON.stringify(config)} onChange={handleTextChange} />
       </Field>
       <Field className={styles.instructions}>Click the button to insert text.</Field>
       <Button appearance="primary" disabled={false} size="large" onClick={handleTextSet}>
@@ -61,4 +62,4 @@ const TextInsertion: React.FC<TextInsertionProps> = (props: TextInsertionProps) 
   );
 };
 
-export default TextInsertion;
+export default PageSettings;
