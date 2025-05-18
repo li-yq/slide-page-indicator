@@ -1,6 +1,6 @@
 import * as React from "react";
 import { makeStyles } from "@fluentui/react-components";
-import { getPageConfig, setPageConfig } from "../../PageConfig";
+import { getPageConfig, setPageConfig } from "../../page-config";
 import PageSettings from "./PageSettings";
 
 const useStyles = makeStyles({

@@ -1,14 +1,20 @@
 /* global PowerPoint console */
 
 export interface PageConfig {
-  text: string;
-  fontSize: number;
+  new_part: boolean;
+  new_section: boolean;
+  section_name: string;
+  skip: boolean;
+  hide: boolean;
 }
 
 // default config
 export const defaultPageConfig: PageConfig = {
-  text: "NAN.",
-  fontSize: 12,
+  new_part: false,
+  new_section: false,
+  section_name: "",
+  skip: false,
+  hide: false,
 };
 
 export async function setPageConfig(config: PageConfig) {
@@ -48,4 +54,34 @@ export async function getPageConfig(): Promise<PageConfig> {
     console.log("Error: " + error);
   }
   return config;
+}
+
+export async function getAllPageConfig(): Promise<Array<PageConfig>> {
+  const configs: Array<PageConfig> = [];
+  try {
+    await PowerPoint.run(async (context) => {
+      const slides = context.presentation.slides;
+      slides.load("items");
+      await context.sync();
+
+      for (const slide of slides.items) {
+        slide.load("tags/key, tags/value");
+      }
+      await context.sync();
+
+      for (const slide of slides.items) {
+        let config = defaultPageConfig;
+        for (const tag of slide.tags.items) {
+          if (tag.key === "INDICATORCONFIG") {
+            config = JSON.parse(tag.value);
+            break;
+          }
+        }
+        configs.push(config);
+      }
+    });
+  } catch (error) {
+    console.log("Error: " + error);
+  }
+  return configs;
 }
