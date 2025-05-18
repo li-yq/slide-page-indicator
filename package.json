@@ -1,9 +1,9 @@
 {
-  "name": "office-addin-taskpane-react",
+  "name": "office-addin-slide-page-indicator",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/Office-Addin-TaskPane-React.git"
+    "url": "https://www.contoso.com/office-addin-slide-page-indicator.git"
   },
   "license": "MIT",
   "config": {

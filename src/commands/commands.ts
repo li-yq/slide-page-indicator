@@ -13,7 +13,7 @@ Office.onReady(() => {
  * Shows a notification when the add-in command is executed.
  * @param event
  */
-function action(event: Office.AddinCommands.Event) {
+function RefeshIndicators(event: Office.AddinCommands.Event) {
   const message: Office.NotificationMessageDetails = {
     type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
     message: "Performed action.",
@@ -32,4 +32,4 @@ function action(event: Office.AddinCommands.Event) {
 }
 
 // Register the function with Office.
-Office.actions.associate("action", action);
+Office.actions.associate("RefeshIndicators", RefeshIndicators);
