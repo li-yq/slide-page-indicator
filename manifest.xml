@@ -11,9 +11,9 @@
   <Description DefaultValue="Adding Beamer-style page indicator to PowerPoint slides." />
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png" />
-  <SupportUrl DefaultValue="https://www.contoso.com/help" />
+  <SupportUrl DefaultValue="https://github.com/li-yq/slide-page-indicator" />
   <AppDomains>
-    <AppDomain>https://www.contoso.com</AppDomain>
+    <AppDomain>https://slide-page-indicator.pages.dev</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Presentation" />

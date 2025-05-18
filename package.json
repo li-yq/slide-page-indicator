@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://www.contoso.com/office-addin-slide-page-indicator.git"
+    "url": "https://github.com/li-yq/slide-page-indicator.git"
   },
   "license": "MIT",
   "config": {
