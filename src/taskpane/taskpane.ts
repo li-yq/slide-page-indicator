@@ -8,9 +8,14 @@ interface PageConfig {
 export async function setPageConfig(config: PageConfig) {
   try {
     await PowerPoint.run(async (context) => {
-      const slide = context.presentation.getSelectedSlides().getItemAt(0);
-      // save the text as slide tag
-      slide.tags.add("INDICATORCONFIG", JSON.stringify(config));
+      // const slide = context.presentation.getSelectedSlides().getItemAt(0);
+      // set all selected slides
+      const slides = context.presentation.getSelectedSlides();
+      slides.load("items");
+      await context.sync();
+      for (const slide of slides.items) {
+        slide.tags.add("INDICATORCONFIG", JSON.stringify(config));
+      }
       await context.sync();
     });
   } catch (error) {
