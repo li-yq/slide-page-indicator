@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Button, Field, Textarea, tokens, makeStyles } from "@fluentui/react-components";
-import { defaultPageConfig, PageConfig } from "../taskpane";
+import { defaultPageConfig, PageConfig } from "../../PageConfig";
 
 /* global HTMLTextAreaElement */
 

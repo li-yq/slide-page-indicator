@@ -30,7 +30,7 @@ export async function setPageConfig(config: PageConfig) {
 }
 
 export async function getPageConfig(): Promise<PageConfig> {
-  let config: PageConfig = { text: "NAN.", fontSize: 12 };
+  let config: PageConfig = defaultPageConfig;
   try {
     await PowerPoint.run(async (context) => {
       const slide = context.presentation.getSelectedSlides().getItemAt(0);
