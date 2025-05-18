@@ -3,6 +3,9 @@
  * See LICENSE in the project root for license information.
  */
 
+import { generateIndicators } from "../indicators";
+import { getAllPageConfig } from "../page-config";
+
 /* global Office */
 
 Office.onReady(() => {
@@ -13,19 +16,9 @@ Office.onReady(() => {
  * Shows a notification when the add-in command is executed.
  * @param event
  */
-function RefeshIndicators(event: Office.AddinCommands.Event) {
-  const message: Office.NotificationMessageDetails = {
-    type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
-    message: "Performed action.",
-    icon: "Icon.80x80",
-    persistent: true,
-  };
+async function RefeshIndicators(event: Office.AddinCommands.Event) {
 
-  // Show a notification message.
-  Office.context.mailbox.item?.notificationMessages.replaceAsync(
-    "ActionPerformanceNotification",
-    message
-  );
+  console.log(generateIndicators(await getAllPageConfig()))
 
   // Be sure to indicate when the add-in command function is complete.
   event.completed();
