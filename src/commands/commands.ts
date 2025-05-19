@@ -59,6 +59,12 @@ Office.actions.associate("RefeshIndicators", RefeshIndicators);
 
 
 async function UpdatePageIndicator(index, indicators: PartPageIndicators) {
+
+    let total_width = 1200
+    let single_width = 100
+    let margin = 20
+    let padding = ((total_width - margin * 2) / indicators.length - single_width) / 2
+
     try {
         await PowerPoint.run(async (context) => {
 
@@ -91,6 +97,9 @@ async function UpdatePageIndicator(index, indicators: PartPageIndicators) {
                 title_shape.textFrame.textRange.font.size = 12
                 title_shape.textFrame.autoSizeSetting = "AutoSizeShapeToFitText"
                 title_shape.textFrame.wordWrap=false
+                title_shape.width = single_width
+                title_shape.left = margin + section_index * single_width + (section_index * 2 + 1) * padding
+                console.log(padding)
 
                 title_shape.name = `toc-header-sec-${section_index}`
                 title_shape.textFrame.textRange.font.color = color
@@ -105,6 +114,8 @@ async function UpdatePageIndicator(index, indicators: PartPageIndicators) {
                 index_shape.textFrame.textRange.font.size = 7
                 index_shape.textFrame.autoSizeSetting = "AutoSizeShapeToFitText"
                 index_shape.textFrame.wordWrap=false
+                index_shape.width = single_width
+                index_shape.left = margin + section_index * single_width + (section_index * 2 + 1) * padding
                 
                 index_shape.name = `toc-header-idx-${section_index}`
                 console.log("add section index" + index_shape.name)
