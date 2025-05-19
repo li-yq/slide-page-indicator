@@ -94,7 +94,7 @@ async function UpdatePageIndicator(index, indicators: PartPageIndicators) {
 
                 const title_shape = shapes.addTextBox(indicator.title)
                 title_shape.top = 3
-                title_shape.textFrame.textRange.font.size = 12
+                title_shape.textFrame.textRange.font.size = 14
                 title_shape.textFrame.autoSizeSetting = "AutoSizeShapeToFitText"
                 title_shape.textFrame.wordWrap=false
                 title_shape.textFrame.textRange.paragraphFormat.horizontalAlignment = "Center"
@@ -111,7 +111,7 @@ async function UpdatePageIndicator(index, indicators: PartPageIndicators) {
                     char_list[indicator.active_page] = "●"
                 }
                 const index_shape = shapes.addTextBox(char_list.join(" "))
-                index_shape.top = 18
+                index_shape.top = 21
                 index_shape.textFrame.textRange.font.size = 7
                 index_shape.textFrame.autoSizeSetting = "AutoSizeShapeToFitText"
                 index_shape.textFrame.wordWrap=false
