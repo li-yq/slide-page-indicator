@@ -97,6 +97,7 @@ async function UpdatePageIndicator(index, indicators: PartPageIndicators) {
                 title_shape.textFrame.textRange.font.size = 12
                 title_shape.textFrame.autoSizeSetting = "AutoSizeShapeToFitText"
                 title_shape.textFrame.wordWrap=false
+                title_shape.textFrame.textRange.paragraphFormat.horizontalAlignment = "Center"
                 title_shape.width = single_width
                 title_shape.left = margin + section_index * single_width + (section_index * 2 + 1) * padding
                 console.log(padding)
@@ -114,6 +115,7 @@ async function UpdatePageIndicator(index, indicators: PartPageIndicators) {
                 index_shape.textFrame.textRange.font.size = 7
                 index_shape.textFrame.autoSizeSetting = "AutoSizeShapeToFitText"
                 index_shape.textFrame.wordWrap=false
+                index_shape.textFrame.textRange.paragraphFormat.horizontalAlignment = "Center"
                 index_shape.width = single_width
                 index_shape.left = margin + section_index * single_width + (section_index * 2 + 1) * padding
                 
