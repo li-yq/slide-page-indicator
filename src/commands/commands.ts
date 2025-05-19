@@ -60,9 +60,9 @@ Office.actions.associate("RefeshIndicators", RefeshIndicators);
 
 async function UpdatePageIndicator(index, indicators: PartPageIndicators) {
 
-    let total_width = 1200
-    let single_width = 100
-    let margin = 20
+    let total_width = 864 // 12 inch
+    let single_width = 126 // 1.75 inch
+    let margin = 36 // half inch
     let padding = ((total_width - margin * 2) / indicators.length - single_width) / 2
 
     try {
